@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Menu from "./components/Menu";
 import Dine from "./components/Dine";
-import { SignatureKind } from "typescript";
 import SignUp from "./components/SignUp";
 
 const App = () => {
