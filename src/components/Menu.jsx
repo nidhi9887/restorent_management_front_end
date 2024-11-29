@@ -18,6 +18,8 @@ const Menu = () => {
     };
     fetchData();
   }, [dispatch]);
+  console.log(foodItemData);
+ 
   return (
     <div className="mx-20 flex h-full">
       <section className="w-96 pt-10 ">
@@ -38,11 +40,9 @@ const Menu = () => {
         <div className="w-full h-[1.5px] bg-black"></div>
         <h1 className="pt-4 pl-4">ZINGER: BUY 1 GET 1</h1>
 
-        <section className="w-full flex flex-wrap">
-          <FoodItem />
-          <FoodItem />
-          <FoodItem />
-          <FoodItem />
+        <section className="w-full h-full flex flex-wrap">
+          {foodItemData?.map((val,ind)=>{ return <FoodItem key={ind} props={val} />})}
+
         </section>
       </div>
     </div>
