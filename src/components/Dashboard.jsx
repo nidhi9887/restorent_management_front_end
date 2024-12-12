@@ -5,12 +5,11 @@ import { TiShoppingCart } from "react-icons/ti";
 const Dashboard = () => {
   const links = ['menu','dine'];
   return (
-    <div className='h-screen border-2 solid  w-full'>
+    <div className='h-screen border-2 solid  w-full '>
       <nav className='border-black border-2  h-[20%] bg-white flex items-center justify-around'>
      <div className='flex '>
       <NavLink className={'no-underline'}>
       <h1 className='h-full p-4 text-red-500 '>TFC</h1>
-
       </NavLink>
       {links.map((val,ind)=>{
         return(

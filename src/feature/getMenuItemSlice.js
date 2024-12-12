@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { getAllMenuItemApi } from "../service/CustomerService";
 export const getAllMenuItem = createAsyncThunk(
-  "customer/getAllMenuItem",
-  async () => {
-    return  axios.get('http://localhost:8080/api/getAllMenuItems');
+  "customer/getAllMenuItem", async ()=>{
+    return  getAllMenuItemApi();
   }
+  
 );
 const initialState = {
   error: "",
@@ -25,7 +25,7 @@ export const getAllMenuItemSlice = createSlice({
     });
     builder.addCase(getAllMenuItem.rejected, (state, action) => {
       state.error = action.error;
-      state.loading = false;
+      state.loading = true;
     });
   },
 });

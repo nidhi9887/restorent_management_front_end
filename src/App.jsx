@@ -4,6 +4,8 @@ import Dashboard from "./components/Dashboard";
 import Menu from "./components/Menu";
 import Dine from "./components/Dine";
 import SignUp from "./components/SignUp";
+import Otp from "./components/Otp";
+import AddFoodItems from "./components/employee/AddFoodItems";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -25,7 +27,12 @@ const App = () => {
           element:<SignUp/>
         },
         {
-          path:''
+          path:'signUp/otp',
+          element:<Otp/>
+        },
+        {
+          path:'addFoodItem',
+          element:<AddFoodItems/>
         }
        ]
     }

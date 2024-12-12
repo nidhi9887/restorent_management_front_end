@@ -3,13 +3,15 @@ import FoodItem from "./FoodItem";
 import { IoSearchSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllMenuItem } from "../feature/getMenuItemSlice";
+import Loading from "./Loading";
 
 const Menu = () => {
   const dispatch = useDispatch();
-  const { loading, error, data } = useSelector((state) => state);
+  const { loading, error, data } = useSelector((state) => state.getAllMenuItemSlice);
   const [foodItemData, setFoodItemData] = useState(data?.data?.data);
   const foodCategory = new Set(foodItemData?.map((val) => val.category));
   
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +20,10 @@ const Menu = () => {
     };
     fetchData();
   }, [dispatch]);
-  console.log(foodItemData);
  
   return (
     <div className="mx-20 flex h-full">
+      {loading&& <Loading/>}
       <section className="w-96 pt-10 ">
         <h1 className="font-bold text-3xl text-center">TFC MENU</h1>
         <ul>{Array.from(foodCategory).map((val,ind)=>{
@@ -38,9 +40,9 @@ const Menu = () => {
           />
         </div>
         <div className="w-full h-[1.5px] bg-black"></div>
-        <h1 className="pt-4 pl-4">ZINGER: BUY 1 GET 1</h1>
+        <h1 className="pt-4 pl-4 mb-10">ZINGER: BUY 1 GET 1</h1>
 
-        <section className="w-full h-full flex flex-wrap">
+        <section className="w-full h-full flex gap-1 flex-wrap">
           {foodItemData?.map((val,ind)=>{ return <FoodItem key={ind} props={val} />})}
 
         </section>
