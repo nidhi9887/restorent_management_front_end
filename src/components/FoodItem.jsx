@@ -7,13 +7,13 @@ const FoodItem = ({ props }) => {
     "base64"
   )}`;
   return (
-    <div className="h-[38rem] w-[45%] ">
+    <div className="h-[25rem] mb-40 w-[25%] ">
       <img
         src={base64Image}
-        className="h-[70%] w-[100%] rounded-lg"
+        className="h-[70%] bg-center w-[100%] rounded-lg"
         alt="food image"
       />
-      <div className=" pt-5 ">
+      <div className="pt-5">
         <h1 className="text-[16px] font-semibold pt-2">{props.itemName}</h1>
         <p className="pt-2">
           <img
@@ -24,12 +24,16 @@ const FoodItem = ({ props }) => {
           {props.veg ? " veg" : " non veg"}
         </p>
         <p className="font-bold pt-2 "> {props.price} ₹</p>
-        <p className="font-light text-sm pt-2"> {props.description}</p>
-        <div className="w-full flex justify-center p-2">
-        <button className="h-9 w-36 rounded-3xl flex justify-center hover:bg-red-500 text-white items-center gap-2 no-underline border-none bg-red-600" type="button"> <span>add to cart</span> <TiShoppingCart/>  </button>
-
+        <p className="font-light text-sm h-16  pt-2 "> {props.description}</p>
+        <div className="w-full flex ">
+          <button
+            className="h-9 w-36 top-3 rounded-3xl flex justify-center hover:bg-red-500 text-white items-center gap-2 no-underline border-none bg-red-600"
+            type="button"
+          >
+            {" "}
+            <span>add to cart</span> <TiShoppingCart />{" "}
+          </button>
         </div>
-
       </div>
     </div>
   );

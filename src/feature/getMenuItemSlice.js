@@ -26,6 +26,7 @@ export const getAllMenuItemSlice = createSlice({
     builder.addCase(getAllMenuItem.rejected, (state, action) => {
       state.error = action.error;
       state.loading = true;
+      
     });
   },
 });

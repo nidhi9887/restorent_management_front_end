@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { sendOtpApi } from "../service/SignupService";
 import { sendMail } from "../feature/SendEmailSlice";
 import Loading from "./Loading";
 
 const SignUp = () => {
   const navigator = useNavigate("/singUp/otp");
-  const {loading, massage, error} = useSelector((state)=>state.SendMailSlice);
+  const { loading, massage, error } = useSelector(
+    (state) => state.SendMailSlice
+  );
   const dispatch = useDispatch();
   const [emailId, setEmailId] = useState("");
   const handleinput = (e) => {
@@ -15,10 +17,8 @@ const SignUp = () => {
   };
   const handleClick = async () => {
     try {
-
-     const res=  await dispatch(sendMail(emailId));
-     navigator('/signUp/otp')
-
+      const res = await dispatch(sendMail(emailId));
+      navigator("/signUp/otp");
     } catch (error) {
       window.alert(error);
     }
@@ -26,13 +26,13 @@ const SignUp = () => {
 
   return (
     <form className="flex justify-center">
-      {loading && <Loading/>}
+      {loading && <Loading />}
       <div className="flex-col h-full flex gap-10 text-center  w-[30%]">
         <div>
           <h1 className="text-red-500 font-bold">TFC</h1>
         </div>
         <div>
-          <h2>Let’s Sign In or Create account with your phone number!</h2>
+          <h2>Let’s Sign In or Create account with your Email Id!</h2>
         </div>
 
         <input
