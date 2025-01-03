@@ -132,15 +132,15 @@ const AddFoodItems = () => {
             onChange={handleInputChange}
           >
             <option>choose type of food item </option>
-            <option value="fruits">Fruits</option>
-            <option value="vegetables">Vegetables</option>
-            <option value="dairy">Dairy Products</option>
-            <option value="meat">Meat</option>
-            <option value="seafood">Seafood</option>
-            <option value="grains">Grains & Cereals</option>
-            <option value="beverages">Beverages</option>
-            <option value="snacks">Snacks</option>
-            <option value="desserts">Desserts</option>
+            <option value="FRUITS">Fruits</option>
+            <option value="VEGETABLES">Vegetables</option>
+            <option value="DAIRY">Dairy Products</option>
+            <option value="MEAT">Meat</option>
+            <option value="SEAFOOD">Seafood</option>
+            <option value="GRAINS">Grains & Cereals</option>
+            <option value="BEVERAGES">Beverages</option>
+            <option value="SNACKS">Snacks</option>
+            <option value="DESSERTS">Desserts</option>
           </select>
         </div>
         <div className="w-full flex justify-center p-2">
