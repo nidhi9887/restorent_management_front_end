@@ -1,16 +1,16 @@
 import React from "react";
-import images from "../assets/assets";
 import { TiShoppingCart } from "react-icons/ti";
+import images from "../assets/assets";
 
 const FoodItem = ({ props }) => {
   const base64Image = `data:image/png;base64,${props?.image?.toString(
     "base64"
   )}`;
   return (
-    <div className="h-[25rem] mb-40 w-[25%] ">
+    <div className="h-[25rem] mb-40">
       <img
         src={base64Image}
-        className="h-[70%] bg-center w-[100%] rounded-lg"
+        className="h-[80%] bg-left w-[100%] rounded-lg"
         alt="food image"
       />
       <div className="pt-5">

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import { sendOtpApi } from "../service/SignupService";
+import { useNavigate } from "react-router-dom";
 import { sendMail } from "../feature/SendEmailSlice";
 import Loading from "./Loading";
 
