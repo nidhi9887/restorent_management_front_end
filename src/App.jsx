@@ -6,6 +6,7 @@ import Dine from "./components/Dine";
 import SignUp from "./components/SignUp";
 import Otp from "./components/Otp";
 import AddFoodItems from "./components/employee/AddFoodItems";
+import NewCustomer from "./components/NewCustomer";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -31,17 +32,18 @@ const App = () => {
           element:<Otp/>
         },
         {
+          path:'newCustomer',
+          element:<NewCustomer/>
+        },
+        {
           path:'addFoodItem',
           element:<AddFoodItems/>
-        }
+        },
        ]
     }
 ]);
    return(
      <RouterProvider router={router}>
-        
-
     </RouterProvider>)
 };
-
 export default App;

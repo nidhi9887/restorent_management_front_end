@@ -3,21 +3,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { sendMail } from "../feature/SendEmailSlice";
 import Loading from "./Loading";
-
+import { Validations } from "../validations/Validations";
+import Alert from "./alert/Alert";
 const SignUp = () => {
   const navigator = useNavigate("/singUp/otp");
-  const { loading, massage, error } = useSelector(
+  const dispatch = useDispatch();
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [emailId, setEmailId] = useState("");
+  const [message,setMessage]=useState("");
+  const [statusType,setStatusType]=useState("");
+  const { loading, massage }= useSelector(
     (state) => state.SendMailSlice
   );
-  const dispatch = useDispatch();
-  const [emailId, setEmailId] = useState("");
   const handleinput = (e) => {
-    setEmailId(e.target.value);
+  setIsEmailValid(Validations.validateEmail(e.target.value?.toLowerCase()));
+  setEmailId(e.target.value?.toLowerCase());
   };
   const handleClick = async () => {
     try {
       const res = await dispatch(sendMail(emailId));
-      navigator("/signUp/otp");
+      setMessage(res.payload.data.message);
+      setStatusType(res.payload.data.type);
+      setTimeout(()=>{
+        setMessage("");
+        navigator("/signUp/otp", { state: emailId });
+      },2000)
+     
     } catch (error) {
       window.alert(error);
     }
@@ -25,6 +36,9 @@ const SignUp = () => {
 
   return (
     <form className="flex justify-center">
+      <div className={`fixed top-0 mt-10 ${message?'':'hidden'}`}>
+      <Alert message={message} type={statusType} ></Alert>
+      </div>
       {loading && <Loading />}
       <div className="flex-col h-full flex gap-10 text-center  w-[30%]">
         <div>
@@ -41,6 +55,10 @@ const SignUp = () => {
           placeholder="Email Id"
           type="email"
         />
+        <p className={`${isEmailValid ? "hidden" : "text-red-500 text-sm"}`}>
+          Email address is not valid. It should contain @gmail.com
+        </p>
+
         <p>
           By “logging in to TFC”, you agree to our Privacy Policy and Terms &
           Conditions.
@@ -49,11 +67,12 @@ const SignUp = () => {
           {" "}
           <button
             type="button"
+            disabled={!isEmailValid}
             onClick={handleClick}
-            className="outline-none h-11 border-none bg-black rounded-3xl text-white w-[40%]"
+            className={`outline-none h-11 border-none hover:bg-slate-800 bg-black rounded-3xl text-white w-[40%] `}
           >
             {" "}
-            Send Code
+            SEND CODE
           </button>
         </div>
       </div>
