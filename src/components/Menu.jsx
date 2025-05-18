@@ -24,7 +24,7 @@ const Menu = () => {
   return (
     <div className="mx-20 flex h-full">
       {loading && <Loading />}
-      <section className="w-96 pt-10 ">
+      <section className="w-[50%] pt-10 ">
         <h1 className="font-bold text-3xl text-left">TFC MENU</h1>
         <ul>
           {Array.from(foodCategory).map((val, ind) => {
@@ -48,7 +48,7 @@ const Menu = () => {
         <div className="w-full h-[1.5px] bg-black"></div>
         <h1 className="pt-4 pl-4 mb-10">ZINGER: BUY 1 GET 1</h1>
 
-        <section className="grid grid-cols-2 gap-4">
+        <section className="grid grid-cols-3 gap-4">
           {foodItemData?.map((val, ind) => {
             return  <FoodItem key={ind} props={val} />;
           })}

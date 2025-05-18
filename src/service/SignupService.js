@@ -7,7 +7,7 @@ export const sendOtpApi= async(queryData)=>{
 
 }
 export const veryfyOtpApi =  async (data)=>{
-     const res =  singUp().post(`/verifyOtp?otpData=${data}`);
+     const res =  singUp().post(`/login?otpData=${data}`);
      return res;
  
  }

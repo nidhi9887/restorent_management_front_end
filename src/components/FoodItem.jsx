@@ -7,15 +7,15 @@ const FoodItem = ({ props }) => {
     "base64"
   )}`;
   return (
-    <div className="h-[25rem] mb-40">
+    <div className="h-[45rem] shadow-xl">
       <img
         src={base64Image}
-        className="h-[80%] bg-left w-[100%] rounded-lg"
+        className="h-[50%] bg-left w-[100%] rounded-lg"
         alt="food image"
       />
-      <div className="pt-5">
+      <div className="pt-5 px-5">
         <h1 className="text-[16px] font-semibold pt-2">{props.itemName}</h1>
-        <p className="pt-2">
+        <p className="pt-2 ">
           <img
             src={props.veg ? `${images.veg}` : `${images.non_veg}`}
             className="h-4 "
@@ -23,7 +23,7 @@ const FoodItem = ({ props }) => {
           />
           {props.veg ? " veg" : " non veg"}
         </p>
-        <p className="font-bold pt-2 "> {props.price} ₹</p>
+        <p className="font-bold pt-2"> {props.price} ₹</p>
         <p className="font-light text-sm h-16  pt-2 "> {props.description}</p>
         <div className="w-full flex ">
           <button

@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Menu from "./components/Menu";
 import Dine from "./components/Dine";
@@ -13,7 +13,7 @@ const App = () => {
     {
         path:'/',
         element:<Dashboard/>,
-        children:[ 
+        children:[
         {
           path:'menu',
           element:<Menu/>
@@ -39,11 +39,11 @@ const App = () => {
           path:'addFoodItem',
           element:<AddFoodItems/>
         },
-       ]
+      ]
     }
 ]);
-   return(
-     <RouterProvider router={router}>
-    </RouterProvider>)
+return(
+<RouterProvider router={router}>
+</RouterProvider>)
 };
 export default App;
