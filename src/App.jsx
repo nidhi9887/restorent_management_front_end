@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import Otp from "./components/Otp";
 import AddFoodItems from "./components/employee/AddFoodItems";
 import NewCustomer from "./components/NewCustomer";
+import RemoveFoodItem from "./components/employee/RemoveFoodItem";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const App = () => {
           path:'addFoodItem',
           element:<AddFoodItems/>
         },
+        {
+          path:'removeFoodItem',
+          element:<RemoveFoodItem/>
+        }
       ]
     }
 ]);

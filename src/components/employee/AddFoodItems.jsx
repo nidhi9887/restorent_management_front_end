@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addMenuItem } from "../../feature/addMenuItemSlice";
 import Loading from "../Loading";
+import images from "../../assets/assets";
 
 const AddFoodItems = () => {
   const { loading, error, massage } = useSelector(
@@ -23,6 +24,16 @@ const AddFoodItems = () => {
       [e.target.id]: e.target.value,
     });
   };
+  
+  const handleRemoveImage = () =>{
+
+     setImageName("");
+      setformData({
+        ...formData, image:""
+      });
+
+
+  }
 
   const handleImageUpload = (e) => {
     e.preventDefault();
@@ -41,7 +52,7 @@ const AddFoodItems = () => {
     const res = dispatch(addMenuItem(formData));
   };
   return (
-    <form className="flex justify-center" onSubmit={handleSubmit}>
+    <form encType="multipart/form-data" className="flex justify-center" onSubmit={handleSubmit}>
       {loading && <Loading />}
       <div className="flex-col h-full flex gap-10 text-center  w-[30%]">
         <div>
@@ -104,21 +115,51 @@ const AddFoodItems = () => {
           </label>
         </div>
         <div className="text-center">
-          <label
-            htmlFor="imgage"
-            className="cursor-pointer w-full inline-block px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300"
-          >
-            Add Image
-          </label>
+
+{!formData.image ? (
+  <div className="relative w-40 h-40 mx-auto mt-4">
+    <img
+      src={images.alternate}
+      alt="Uploaded"
+      className="w-40 h-40 object-cover rounded-full"
+    />
+
+    {/* Add  button overlay */}
+    <label
+      htmlFor="imgage"
+      className="absolute inset-0 font-bold flex items-center justify-center bg-black bg-opacity-50 text-white text-sm rounded-full hover:bg-opacity-75 transition"
+    >
+      Add Image
+    </label>
 
           <input
             type="file"
             id="imgage"
-            required
             className="hidden"
             onChange={(e) => handleImageUpload(e)}
+            required
             accept="image/*"
           />
+  </div>
+) : (
+  <div className="relative w-40 h-40 mx-auto mt-4">
+    <img
+      src={URL.createObjectURL(formData.image.get("image"))}
+      alt="Uploaded"
+      className="w-40 h-40 object-cover rounded-full"
+    />
+
+    {/* Remove button overlay */}
+    <button
+      onClick={handleRemoveImage}
+      className="absolute inset-0 font-bold flex items-center justify-center bg-black bg-opacity-50 text-white text-sm rounded-full hover:bg-opacity-75 transition"
+    >
+      Remove
+    </button>
+  </div>
+)}
+
+
 
           <p id="file-name" className="mt-4 text-lg text-gray-700 ">
             {imageName || "No file chosen"}
